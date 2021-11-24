@@ -46,7 +46,7 @@ struct soru {
  	int rasgele_soru_5;
 
 	if ( !( cfPtr = fopen( "sorular.txt", "a+" ) ) ) {
-	printf( "Dosya açýlmadý.\n" );
+	printf( "Dosya aÃ§Ã½lmadÃ½.\n" );
 	} 
 	else {
 	fclose(cfPtr);
@@ -76,7 +76,7 @@ struct soru {
 
 	 case 5:
 	 if ( !( sfPtr = fopen( "skorlar.txt", "r+b" ) ) ) {
-		printf( "Skor mevcut deðil skorlar dosyasý açýlamadý.\n" );
+		printf( "Skor mevcut deÃ°il skorlar dosyasÃ½ aÃ§Ã½lamadÃ½.\n" );
 	 } 
 	 else {
 		enyuksekskor( sfPtr );
@@ -84,7 +84,7 @@ struct soru {
 	 break;	
 	 
 	 default:
-	 printf( "Yanlýþ seçim :(\n" );
+	 printf( "YanlÃ½Ã¾ seÃ§im :(\n" );
 	 break;
 	
 	 }
@@ -100,13 +100,13 @@ struct soru {
  int secim; 
 
 
- printf( "\nTarafýný seç\n"
+ printf( "\nTarafÃ½nÃ½ seÃ§\n"
  "1 - Soru ekle\n"
  "2 - Soru sil\n"
- "3 - Sorularý göster ve güncelle\n"
+ "3 - SorularÃ½ gÃ¶ster ve gÃ¼ncelle\n"
  "4 - Oyun oyna\n"
- "5 - En yüksek Skorlar\n"
- "6 - Çýk\n›››› " );
+ "5 - En yÃ¼ksek Skorlar\n"
+ "6 - Ã‡Ã½k\nâ€ºâ€ºâ€ºâ€º " );
 
  scanf( "%d", &secim );
 
@@ -117,7 +117,7 @@ struct soru {
  void soruekle( FILE *fPtr ){
  	
 	int soru_num;
-	printf("Soru numarasý:");
+	printf("Soru numarasÃ½:");
 	scanf( "%d", &soru_num );
  	
 	struct soru rasgele={0,"","","","","",'\0'};
@@ -129,7 +129,7 @@ struct soru {
 
 
 	 if ( rasgele.soru_ID != 0 ) { 
-	 printf( "Burada soru varmýþ :(\n");
+	 printf( "Burada soru varmÃ½Ã¾ :(\n");
 	 } 
 	
 	 else { 
@@ -142,19 +142,19 @@ struct soru {
 		printf("Soru metnini giriniz:\n");
 		scanf("%[^\n]",&rasgele.soru_metni);
 	getchar();
-		printf("A þýkkýný giriniz:\n");
+		printf("A Ã¾Ã½kkÃ½nÃ½ giriniz:\n");
 		scanf("%[^\n]",&rasgele.secenek_A);
 	getchar();
-		printf("B þýkkýný giriniz:\n");
+		printf("B Ã¾Ã½kkÃ½nÃ½ giriniz:\n");
 		scanf("%[^\n]",&rasgele.secenek_B);
 	getchar();
-		printf("C þýkkýný giriniz:\n");
+		printf("C Ã¾Ã½kkÃ½nÃ½ giriniz:\n");
 		scanf("%[^\n]",&rasgele.secenek_C);
 	getchar();
-		printf("D þýkkýný giriniz:\n");
+		printf("D Ã¾Ã½kkÃ½nÃ½ giriniz:\n");
 		scanf("%[^\n]",&rasgele.secenek_D);
 	getchar();
-		printf("Doðru cvp giriniz:\n");
+		printf("DoÃ°ru cvp giriniz:\n");
 		scanf("%[^\n]",&rasgele.Dogru_cevap);
 
 		
@@ -164,9 +164,9 @@ struct soru {
 	 fwrite( &rasgele, sizeof( struct soru ), 1, fPtr );
 	 
 	 
-	 printf("Soru dosyaya yazýlýyor...\n");
+	 printf("Soru dosyaya yazÃ½lÃ½yor...\n");
 	 sleep(3.5);
-	 printf("Soru baþarýlý bir þekilde eklenmiþtir:)\n");
+	 printf("Soru baÃ¾arÃ½lÃ½ bir Ã¾ekilde eklenmiÃ¾tir:)\n");
 	
 	 fclose( fPtr ); 
 	 sleep(3);
@@ -192,18 +192,18 @@ struct soru {
 		s_sayisi++;
 		}
 
-		printf("(Boþ sorular yazdýrýlmamýþtýr.)\n");
+		printf("(BoÃ¾ sorular yazdÃ½rÃ½lmamÃ½Ã¾tÃ½r.)\n");
 		for(a=1; a<s_sayisi; a++){
 			 fseek( fPtr, ( a - 1 ) * sizeof( struct soru ), SEEK_SET );
 			 fread( &alinacak, sizeof( struct soru ), 1, fPtr );
 			
 			if (alinacak.soru_ID==0) continue;
-			printf("Soru numarasý:%d\n"
+			printf("Soru numarasÃ½:%d\n"
 			"Metin:%s\n\n",alinacak.soru_ID,&alinacak.soru_metni);	
 		}
 		
 
-	printf("Silinecek sorunun numarasýný giriniz:");
+	printf("Silinecek sorunun numarasÃ½nÃ½ giriniz:");
 	scanf( "%d", &soru_num );
 	
 	fseek( fPtr, ( soru_num - 1 ) * sizeof( struct soru ), SEEK_SET );
@@ -211,12 +211,12 @@ struct soru {
 	fread( &alinacak, sizeof( struct soru ), 1, fPtr );
 	 
 	if (alinacak.soru_ID!=0){
-	printf("Sorunun numarasý:%d\n"
+	printf("Sorunun numarasÃ½:%d\n"
 	"Metin:%s\n",alinacak.soru_ID,&alinacak.soru_metni);
 	}
 
 	 if ( alinacak.soru_ID == 0 ) { 
-	 	printf( "Burada soru yokmuþ :(\n");
+	 	printf( "Burada soru yokmuÃ¾ :(\n");
 	 } 
  	else{
  		printf("Emin misiniz?[E/H]");
@@ -250,7 +250,7 @@ struct soru {
 			
 			if (alinacak.soru_ID==0) continue;
 			
-			printf("Sorunun numarasý:%d\n"
+			printf("Sorunun numarasÃ½:%d\n"
 			"Metin:%s\n"
 			"A:%s\n"
 			"B:%s\n"
@@ -261,12 +261,12 @@ struct soru {
 		}
 		
 	
-	printf("Güncellenecek soruyu seçiniz:");
+	printf("GÃ¼ncellenecek soruyu seÃ§iniz:");
 	scanf( "%d", &istenen_num );
 		
 		
 	 if ( alinacak.soru_ID == 0 ) { 
-	 	printf( "Burada soru yokmuþ :(\n");
+	 	printf( "Burada soru yokmuÃ¾ :(\n");
 	 } 
 	 else{
 	cvp_ile_goster( fPtr , istenen_num );
@@ -286,7 +286,7 @@ struct soru {
 	fseek( fPtr, ( istenen_num - 1 ) * sizeof( struct soru ), SEEK_SET );
 	fread(&istenen_soru, sizeof( struct soru), 1, fPtr);
 	
-	printf("Sorunun numarasý:%d\n"
+	printf("Sorunun numarasÃ½:%d\n"
 	"Metin:%s\n"
 	"A:%s\n"
 	"B:%s\n"
@@ -308,19 +308,19 @@ struct soru {
 		printf("Yeni soru metnini giriniz:\n");
 		scanf("%[^\n]",&istenen_soru.soru_metni);
 	getchar();
-		printf("Yeni a þýkkýný giriniz:\n");
+		printf("Yeni a Ã¾Ã½kkÃ½nÃ½ giriniz:\n");
 		scanf("%[^\n]",&istenen_soru.secenek_A);
 	getchar();
-		printf("Yeni b þýkkýný giriniz:\n");
+		printf("Yeni b Ã¾Ã½kkÃ½nÃ½ giriniz:\n");
 		scanf("%[^\n]",&istenen_soru.secenek_B);
 	getchar();
-		printf("Yeni c þýkkýný giriniz:\n");
+		printf("Yeni c Ã¾Ã½kkÃ½nÃ½ giriniz:\n");
 		scanf("%[^\n]",&istenen_soru.secenek_C);
 	getchar();
-		printf("Yeni d þýkkýný giriniz:\n");
+		printf("Yeni d Ã¾Ã½kkÃ½nÃ½ giriniz:\n");
 		scanf("%[^\n]",&istenen_soru.secenek_D);
 	getchar();
-		printf("Yeni doðru cvp giriniz:\n");
+		printf("Yeni doÃ°ru cvp giriniz:\n");
 		scanf("%[^\n]",&istenen_soru.Dogru_cevap);
  	
  	 fseek( fPtr, ( istenen_soru.soru_ID - 1 ) * sizeof( struct soru ), SEEK_SET );
@@ -346,7 +346,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 	int dolu=0;
 	
 	getchar();
-	printf("Aslan parçasý adýn ne?\n");
+	printf("AdÄ±nÄ±z?\n");
 	scanf("%[^\n]",&sampiyon.oyuncu_adi_soyadi);
 	
 	rewind( fPtr );
@@ -358,7 +358,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 	}
 	dolu=dolu-1;
 	if(dolu>=5){
-		printf("%d soru arasýndan 5 adet rastgele soru seciliyor...\n", dolu);
+		printf("%d soru arasÃ½ndan 5 adet rastgele soru seciliyor...\n", dolu);
 		sleep(2.9);
 		soru_sayisi=soru_sayisi-1;
 		
@@ -372,7 +372,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 			fread(&okunan_soru,sizeof(struct soru),1,fPtr);
 		
  			if(okunan_soru.soru_ID!=0){
-	 			printf("\nSorunun numarasý:%d\n"
+	 			printf("\nSorunun numarasÃ½:%d\n"
 				"Metin:%s\n"
 				"A:%s\n"
 				"B:%s\n"
@@ -388,7 +388,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 			printf("\nDogru cevap verdin!\n ");
 		}
 		else
-			printf("\nYanlýs cevap verdin!\n ");
+			printf("\nYanlÃ½s cevap verdin!\n ");
 		
 		dogru[0]=okunan_soru.Dogru_cevap;
 		kullanici[0]=kulcevap;
@@ -406,7 +406,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 				fseek(fPtr, (rastgele_id2+1-1)*sizeof(struct soru), SEEK_SET);
 				fread(&okunan_soru,sizeof(struct soru),1,fPtr);
 				if(okunan_soru.soru_ID!=0){
-	 				printf("\nSorunun numarasý:%d\n"
+	 				printf("\nSorunun numarasÃ½:%d\n"
 					"Metin:%s\n"
 					"A:%s\n"
 					"B:%s\n"
@@ -423,7 +423,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
  			printf("\nDogru cevap verdin!\n");
  		}
 		else
-			printf("\nYanlýs cevap verdin!\n");
+			printf("\nYanlÃ½s cevap verdin!\n");
 
 		dogru[1]=okunan_soru.Dogru_cevap;
 		kullanici[1]=kulcevap;
@@ -434,7 +434,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 				fseek(fPtr, (rastgele_id3+1-1)*sizeof(struct soru), SEEK_SET);
 				fread(&okunan_soru,sizeof(struct soru),1,fPtr);
 				if(okunan_soru.soru_ID!=0){
-	 				printf("\nSorunun numarasý:%d\n"
+	 				printf("\nSorunun numarasÃ½:%d\n"
 					"Metin:%s\n"
 					"A:%s\n"
 					"B:%s\n"
@@ -451,7 +451,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
  			printf("\nDogru cevap verdin!\n");
 		}
 		else
-			printf("\nYanlýs cevap verdin!\n");
+			printf("\nYanlÃ½s cevap verdin!\n");
 
 		dogru[2]=okunan_soru.Dogru_cevap;
 		kullanici[2]=kulcevap;
@@ -463,7 +463,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 				fseek(fPtr, (rastgele_id4+1-1)*sizeof(struct soru), SEEK_SET);
 				fread(&okunan_soru,sizeof(struct soru),1,fPtr);
 				if(okunan_soru.soru_ID!=0){
-	 				printf("\nSorunun numarasý:%d\n"
+	 				printf("\nSorunun numarasÃ½:%d\n"
 					"Metin:%s\n"
 					"A:%s\n"
 					"B:%s\n"
@@ -479,7 +479,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
  			printf("\nDogru cevap verdin!\n");
  		}
  		else
- 			printf("\nYanlýs cevap verdin!\n");
+ 			printf("\nYanlÃ½s cevap verdin!\n");
 	
 		dogru[3]=okunan_soru.Dogru_cevap;
 		kullanici[3]=kulcevap;
@@ -490,7 +490,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 				fseek(fPtr, (rastgele_id5+1-1)*sizeof(struct soru), SEEK_SET);
 				fread(&okunan_soru,sizeof(struct soru),1,fPtr);
 				if(okunan_soru.soru_ID!=0){
-	 				printf("\nSorunun numarasý:%d\n"
+	 				printf("\nSorunun numarasÃ½:%d\n"
 					"Metin:%s\n"
 					"A:%s\n"
 					"B:%s\n"
@@ -507,7 +507,7 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 			printf("\nDogru cevap verdin!\n");
 		}
 		else
-			printf("\nYanlýs cevap verdin!\n");
+			printf("\nYanlÃ½s cevap verdin!\n");
 	
 		dogru[4]=okunan_soru.Dogru_cevap;
 		kullanici[4]=kulcevap;
@@ -531,18 +531,18 @@ void oyun_oyna( FILE *fPtr, FILE *sPtr ){
 	
 		sampiyon.skor=puan;
 	 
-		printf("Adýnýz: %s\n",sampiyon.oyuncu_adi_soyadi);
-		printf("Puanýnýz: %d\n",sampiyon.skor);
+		printf("AdÃ½nÃ½z: %s\n",sampiyon.oyuncu_adi_soyadi);
+		printf("PuanÃ½nÃ½z: %d\n",sampiyon.skor);
 		fwrite(&sampiyon,sizeof(struct oyuncu),1,sPtr);
 		fclose(sPtr);
-		printf("Adýnýz ve Puanýnýz skorlar.txt dosyasýna yazýldý.\n");
+		printf("AdÃ½nÃ½z ve PuanÃ½nÃ½z skorlar.txt dosyasÃ½na yazÃ½ldÃ½.\n");
 		sleep(2.7);
-		printf("Ana menüye yönlendirliyorsunuz...\n");
+		printf("Ana menÃ¼ye yÃ¶nlendirliyorsunuz...\n");
 		sleep(3.9);
 	}
 	
 	else{
-		printf("Soru sayýsý %d ve 5'den az rasgele 5 soru secilemiyor! Soru ekleyin!\n", dolu);
+		printf("Soru sayÃ½sÃ½ %d ve 5'den az rasgele 5 soru secilemiyor! Soru ekleyin!\n", dolu);
 	}
  }
 	
@@ -560,7 +560,7 @@ void enyuksekskor( FILE *fPtr ){
   	int sori=0;
   	int say;
   	
-  	printf("### En yüksek 3 skor ###\n");
+  	printf("### En yÃ¼ksek 3 skor ###\n");
   	
   	while(!feof(fPtr)){
   		fread(&sampiyon,sizeof(struct oyuncu),1,fPtr);
